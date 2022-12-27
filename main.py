@@ -1,25 +1,28 @@
 import pygame
 
+image_path = '/data/data/com.xejb.Nauty/files/app/'
+
+
 clock = pygame.time.Clock()
 
 pygame.init()
 screen = pygame.display.set_mode((618, 359))
 pygame.display.set_caption('Nauty Game')
-icon = pygame.image.load('images/icon.png').convert_alpha()
+icon = pygame.image.load(image_path + 'images/icon.png').convert_alpha()
 pygame.display.set_icon(icon)
 
 # Player
-bg = pygame.image.load('images/fon.jpg').convert_alpha()
+bg = pygame.image.load(image_path + 'images/fon.jpg').convert_alpha()
 walk_left = [
-    pygame.image.load('images/left.png').convert_alpha(),
-    pygame.image.load('images/runleft.png').convert_alpha(),
+    pygame.image.load(image_path + 'images/left.png').convert_alpha(),
+    pygame.image.load(image_path + 'images/runleft.png').convert_alpha(),
 ]
 walk_right = [
-    pygame.image.load('images/right.png').convert_alpha(),
-    pygame.image.load('images/runright.png').convert_alpha(),
+    pygame.image.load(image_path + 'images/right.png').convert_alpha(),
+    pygame.image.load(image_path + 'images/runright.png').convert_alpha(),
 ]
 
-ghost = pygame.image.load('images/enemy.png').convert_alpha()
+ghost = pygame.image.load(image_path + 'images/enemy.png').convert_alpha()
 ghost_list_in_game = []
 
 player_anim_count = 0
@@ -35,13 +38,13 @@ jump_count = 8
 ghost_timer = pygame.USEREVENT + 1
 pygame.time.set_timer(ghost_timer, 2500)
 
-label = pygame.font.Font('fonts/Sevillana-Regular.ttf', 40)
+label = pygame.font.Font(image_path + 'fonts/Sevillana-Regular.ttf', 40)
 lose_label = label.render('You lose!', False, (193, 196, 199))
 restart_label = label.render('Play again', False, (115, 132, 148))
 restart_label_rect = restart_label.get_rect(topleft=(180, 200))
 
 bullets_left = 5
-bullet = pygame.image.load('images/bullet.png').convert_alpha()
+bullet = pygame.image.load(image_path + 'images/bullet.png').convert_alpha()
 bullets = []
 
 gameplay = True
