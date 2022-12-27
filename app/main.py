@@ -21,12 +21,25 @@ walk_right = [
 player_anim_count = 0
 bg_x = 0
 
+player_speed = 5
+player_x = 150
+
 run = True
 while run:
 
     screen.blit(bg, (bg_x, 0))
     screen.blit(bg, (bg_x + 618, 0))
-    screen.blit(walk_right[player_anim_count], (300, 250))
+
+    keys = pygame.key.get_pressed()()
+    if keys[pygame.K_LEFT]:
+        screen.blit(walk_left[player_anim_count], (player_x, 250))
+    else:
+        screen.blit(walk_right[player_anim_count], (player_x, 250))
+    keys = pygame.key.get_pressed()
+    if keys[pygame.K_LEFT] and player_x > 50:
+        player_x -= player_speed
+    elif keys[pygame.K_RIGHT] and player_x < 200:
+        player_x += player_speed
 
     if player_anim_count == 3:
         player_anim_count = 0
